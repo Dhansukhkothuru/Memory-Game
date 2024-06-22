@@ -1,5 +1,6 @@
 const cards = document.querySelectorAll(".card"),
     timeTag = document.querySelector(".time b"),
+    
     flipsTag = document.querySelector(".flips b"),
     refreshBtn = document.querySelector(".details button"),
     setTimerBtn = document.querySelector(".set-timer-btn"),
@@ -8,12 +9,15 @@ const cards = document.querySelectorAll(".card"),
 
 let maxTime = 0;
 let timeLeft = maxTime;
+
 let flips = 0;
 let matchedCard = 0;
 let disableDeck = false;
+
 let isPlaying = false;
 let cardOne, cardTwo, timer;
 let lowestFlips = Infinity;
+
 
 function initTimer() {
     if (timeLeft <= 0) {
@@ -24,6 +28,7 @@ function initTimer() {
     timeLeft--;
     timeTag.innerText = timeLeft;
 }
+
 
 function flipCard({ target: clickedCard }) {
     if (!isPlaying) {
@@ -45,6 +50,7 @@ function flipCard({ target: clickedCard }) {
     }
 }
 
+
 function matchCards(img1, img2) {
     if (img1 === img2) {
         matchedCard++;
@@ -62,6 +68,7 @@ function matchCards(img1, img2) {
             return;
         }
         cardOne.removeEventListener("click", flipCard);
+        
         cardTwo.removeEventListener("click", flipCard);
         cardOne = cardTwo = "";
         disableDeck = false;
@@ -81,12 +88,14 @@ function matchCards(img1, img2) {
     }, 1200);
 }
 
+
 function shuffleCard() {
     if (timerInput.value === "" || isNaN(timerInput.value) || parseInt(timerInput.value) <= 0) {
         alert("Please set a valid time in seconds!");
         return;
     }
     maxTime = parseInt(timerInput.value);
+    
     timeLeft = maxTime;
     flips = matchedCard = 0;
     cardOne = cardTwo = "";
@@ -108,7 +117,9 @@ function shuffleCard() {
     });
 }
 
+
 setTimerBtn.addEventListener("click", shuffleCard);
+
 refreshBtn.addEventListener("click", shuffleCard);
 
 cards.forEach(card => {
