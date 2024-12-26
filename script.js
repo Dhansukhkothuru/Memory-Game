@@ -56,8 +56,8 @@ function matchCards(img1, img2) {
         matchedCard++;
         if (matchedCard == 6 && timeLeft > 0) {
             setTimeout(() => {
-                cardOne.classList.remove("flip");
-                cardTwo.classList.remove("flip");
+                // cardOne.classList.remove("flip");
+                // cardTwo.classList.remove("flip");
                 clearInterval(timer);
                 if (flips < lowestFlips) {
                     lowestFlips = flips;
